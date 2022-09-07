@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       #style_table{  
+        width: 500px;
+        height: 100px;
+        text-align: center;
+        border: 1px;
+        border-color: black;
+        border-spacing: 0px;
+        
+       }
+       #heading1{
+            background-color: yellow;
+       }
+       #total_sum{
+            background-color: yellow;
+       }
+       #span{
+         background-color: white;
+       }
+       
+    </style>
+</head>
+<body>
+    <table id="style_table"  border="1px">
+        <tr id="heading1">
+            <td> ID </td>
+            <td> <span id="span">Subject 1 </span> <span id="span"><br>- mark</span> </td>
+            <td><span id="span">Subject 2 </span> <span id="span"><br>- mark</span></td>
+            <td><span id="span">Subject 1 </span> <span id="span"><br>- mark</span></td>
+            <td><span id="span">Total  </span></td>
+            <td><span id="span">Action   </span> </td>
+        </tr>
+        <tr>
+            <td id="id_1"></td>
+            <td id="td_11"></td>
+            <td id="td_12"></td>
+            <td id="td_13"></td>
+            <td id="td_14"></td>
+            <td><button id="plus_1" onclick="addRow()">+</button> <button id="minus_1" onclick="deleterow()">-</button></td>
+        </tr>
+        <tr>
+            <td id="id_2"></td>
+            <td id="td_21"></td>
+            <td id="td_22"></td>
+            <td id="td_23"></td>
+            <td id="td_24"></td>
+            <td><button id="plus_2" onclick="addRow()">+</button> <button id="minus_2" onclick="deleterow()">-</button></td>
+        </tr>
+        <tr>
+            <td id="id_3"></td>
+            <td id="td_31"></td>
+            <td id="td_32"></td>
+            <td id="td_33"></td>
+            <td id="td_34"></td>
+            <td><button id="plus_3" onclick="addRow()">+</button> <button id="minus_3" onclick="deleterow()">-</button></td>
+        </tr>
+       
+    </table>
+
+    <script>
+        let id1 = 1,id2 = 2,id3 = 3;
+        const a = 80 , b = 30 , c = 90;
+        const d = 70, e = 70 , f =30 ;
+        const g = 40, h = 30 , i = 50 ;
+        let j = a+d+g, k = b+e+h, l =c+f+i;
+        let sum_abc = a+b+c;
+        let sum_def = d+e+f;
+        let sum_ghi = g+h+i;
+        let allSum = sum_abc+sum_def+ sum_ghi;
+       
+        
+
+        document.getElementById("id_1").innerHTML = id1;
+        document.getElementById("id_2").innerHTML = id2;
+        document.getElementById("id_3").innerHTML = id3;
+
+        document.getElementById("td_11").innerHTML = a;
+        document.getElementById("td_21").innerHTML = b;
+        document.getElementById("td_31").innerHTML = c;
+        //document.getElementById("td_41").innerHTML = a+b+c ;
+
+        document.getElementById("td_12").innerHTML = d;
+        document.getElementById("td_22").innerHTML = e;
+        document.getElementById("td_32").innerHTML = f;
+        //document.getElementById("td_42").innerHTML = d+e+f  ;
+
+        document.getElementById("td_13").innerHTML = g;
+        document.getElementById("td_23").innerHTML = h;
+        document.getElementById("td_33").innerHTML = i;
+        //document.getElementById("td_43").innerHTML = g+h+i;
+
+
+        document.getElementById("td_14").innerHTML = j;
+        document.getElementById("td_24").innerHTML = k;
+        document.getElementById("td_34").innerHTML = l;
+        //document.getElementById("td_44").innerHTML = j+k+l;
+        let buttonClicked = false;
+        if(!buttonClicked)Summary();
+        
+        function Summary(){
+            var table = document.getElementById("style_table");
+                var row = table.insertRow();
+                row.setAttribute("id","total_sum");
+                var cell = row.insertCell();
+                cell.innerHTML = "Total";
+                cell = row.insertCell();
+                cell.innerHTML = sum_abc;
+                cell = row.insertCell();
+                cell.innerHTML = sum_def;
+                cell = row.insertCell();
+                cell.innerHTML = sum_ghi;
+                cell = row.insertCell();
+                cell.innerHTML = allSum;
+                cell = row.insertCell();
+               //buttonClicked = false;
+        }
+        
+        function addRow(){
+            buttonClicked = true;
+            if(event.srcElement.id === "plus_1"){
+                sum_abc += a;
+                sum_def += d;
+                sum_ghi += g;
+                var table = document.getElementById("style_table");
+                var row = table.insertRow();
+                var cell = row.insertCell();
+                cell.innerHTML = ++id3;
+                cell = row.insertCell();
+                cell.innerHTML = a;
+                cell = row.insertCell();
+                cell.innerHTML = d;
+                cell = row.insertCell();
+                cell.innerHTML = g;
+                cell = row.insertCell();
+                allSum += a+d+g;
+                cell.innerHTML = a+d+g;
+                cell = row.insertCell();
+                
+            }
+            if(event.srcElement.id == "plus_2"){
+                sum_abc += b;
+                sum_def += e;
+                sum_ghi += h;
+                var table = document.getElementById("style_table");
+                var row = table.insertRow();
+                var cell = row.insertCell();
+                cell.innerHTML = ++id3;
+                cell = row.insertCell();
+                cell.innerHTML = b;
+                cell = row.insertCell();
+                cell.innerHTML = e;
+                cell = row.insertCell();
+                cell.innerHTML = h;
+                cell = row.insertCell();
+                allSum+= b+e+h;
+                cell.innerHTML = b+e+h;
+                cell = row.insertCell();
+            }
+            if(event.srcElement.id == "plus_3"){
+                sum_abc += c;
+                sum_def += f;
+                sum_ghi += i;
+                var table = document.getElementById("style_table");
+                var row = table.insertRow();
+                var cell = row.insertCell();
+                cell.innerHTML = ++id3;
+                cell = row.insertCell();
+                cell.innerHTML = c;
+                cell = row.insertCell();
+                cell.innerHTML = f;
+                cell = row.insertCell();
+                cell.innerHTML = i;
+                cell = row.insertCell();
+                allSum += c+f+i; 
+                cell.innerHTML = c+f+i;
+                cell = row.insertCell();
+            }
+            if(buttonClicked){
+                var remove_row = document.getElementById("total_sum");
+                remove_row.parentNode.removeChild(remove_row);
+                Summary();
+            }
+        }
+       
+        function deleterow() {
+          
+            
+            
+            if(event.srcElement.id == "minus_1"){
+                sum_abc -= a;
+                sum_def -= d;
+                sum_ghi -= g;
+              
+            
+                
+            }
+            if(event.srcElement.id == "minus_2"){
+                sum_abc -= b;
+                sum_def -= e;
+                sum_ghi -= h;
+                
+            }
+            if(event.srcElement.id == "minus_3"){
+                sum_abc -= c;
+                sum_def -= f;
+                sum_ghi -= i;
+               
+               
+            }
+            
+            var table = document.getElementById("style_table");
+            table.deleteRow(-1);
+           
+           
+        }
+        
+    </script>
+</body>
+</html>

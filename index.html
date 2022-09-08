@@ -216,12 +216,15 @@
                
             }
             var table = document.getElementById("style_table");
-            //var table = document.querySelector('style_table');
             table.deleteRow(table.rows.length-2);
+            if(buttonClicked){
+                var remove_row = document.getElementById("total_sum");
+                remove_row.parentNode.removeChild(remove_row);
+                Summary();
+            }
             
         }
-        if(deleteButtonClick)Summary();
-
+       
         function countTableRow(){
             var table = document.getElementById('style_table');
             var rowCount = table.rows.length;

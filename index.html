@@ -64,16 +64,18 @@
        
     </table>
 
+    <h1 id="table_row"></h1>
+    <button onclick="countTableRow()">Show </button>
     <script>
         let id1 = 1,id2 = 2,id3 = 3;
         const a = 80 , b = 30 , c = 90;
         const d = 70, e = 70 , f =30 ;
         const g = 40, h = 30 , i = 50 ;
         let j = a+d+g, k = b+e+h, l =c+f+i;
-        let sum_abc = a+b+c;
-        let sum_def = d+e+f;
-        let sum_ghi = g+h+i;
-        let allSum = sum_abc+sum_def+ sum_ghi;
+        var sum_abc = a+b+c;
+        var sum_def = d+e+f;
+        var sum_ghi = g+h+i;
+        var allSum = sum_abc+sum_def+ sum_ghi;
        
         
 
@@ -124,7 +126,7 @@
         
         function addRow(){
             buttonClicked = true;
-            if(event.srcElement.id === "plus_1"){
+            if(event.srcElement.id == "plus_1"){
                 sum_abc += a;
                 sum_def += d;
                 sum_ghi += g;
@@ -188,38 +190,44 @@
                 Summary();
             }
         }
-       
+        let deleteButtonClick = false;
+        
         function deleterow() {
-          
-            
-            
+            deleteButtonClick = true;
             if(event.srcElement.id == "minus_1"){
                 sum_abc -= a;
                 sum_def -= d;
-                sum_ghi -= g;
-              
-            
+                sum_ghi -= g; 
+                console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
                 
             }
+
             if(event.srcElement.id == "minus_2"){
                 sum_abc -= b;
                 sum_def -= e;
                 sum_ghi -= h;
-                
+                console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
             }
             if(event.srcElement.id == "minus_3"){
                 sum_abc -= c;
                 sum_def -= f;
                 sum_ghi -= i;
-               
+                console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
                
             }
-            
             var table = document.getElementById("style_table");
-            table.deleteRow(-1);
-           
-           
+            //var table = document.querySelector('style_table');
+            table.deleteRow(table.rows.length-2);
+            
         }
+        if(deleteButtonClick)Summary();
+
+        function countTableRow(){
+            var table = document.getElementById('style_table');
+            var rowCount = table.rows.length;
+            document.getElementById("table_row").innerHTML = rowCount;
+        }   
+       
         
     </script>
 </body>

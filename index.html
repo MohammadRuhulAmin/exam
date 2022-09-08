@@ -190,14 +190,15 @@
                 Summary();
             }
         }
-        let deleteButtonClick = false;
+        
         
         function deleterow() {
-            deleteButtonClick = true;
+            
             if(event.srcElement.id == "minus_1"){
                 sum_abc -= a;
                 sum_def -= d;
                 sum_ghi -= g; 
+                allSum -=(a+d+g); 
                 console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
                 
             }
@@ -206,12 +207,14 @@
                 sum_abc -= b;
                 sum_def -= e;
                 sum_ghi -= h;
+                allSum -=(b+e+h);
                 console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
             }
             if(event.srcElement.id == "minus_3"){
                 sum_abc -= c;
                 sum_def -= f;
                 sum_ghi -= i;
+                allSum -=(c+f+i);
                 console.log(sum_abc , " " , sum_def , " " ,sum_ghi);
                
             }
